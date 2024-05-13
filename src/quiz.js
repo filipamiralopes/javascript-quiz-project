@@ -15,7 +15,7 @@ class Quiz {
         return this.questions[this.currentQuestionIndex++]
     }
 
-    shuffleQuestions(){
+    shuffleQuestions(){ // LT solution
         for (let i = 0; i < this.questions.length; i++) {
             let randomIndex = Math.floor(Math.random() * this.questions.length);
             let randomElement = this.questions[randomIndex];

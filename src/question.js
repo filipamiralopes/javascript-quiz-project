@@ -5,13 +5,18 @@ class Question {
     this.answer = answer;
     this.difficulty = difficulty;
   }
-  shuffleChoices() {
-    for (let i = 0; i < this.choices.length; i++) {
-      let randomIndex = Math.floor(Math.random() * this.choices.length);
-      let randomElement = this.choices[randomIndex];
-      this.choices.splice(randomElement, 1);
-      this.choices.push(randomElement);
+  shuffleChoices() { // Our solution
+    const randomizedArr = [];
+    let counter = this.choices.length;
+    while (counter > 0) {
+      let shuffledChoice =
+        this.choices[Math.floor(Math.random() * this.choices.length)];
+      if (!randomizedArr.includes(shuffledChoice)) {
+        randomizedArr.push(shuffledChoice);
+        counter -= 1;
+      }
     }
-    
+    this.choices = randomizedArr;
+    return this.choices;
   }
 }

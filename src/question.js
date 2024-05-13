@@ -34,18 +34,18 @@ class Question {
 
 }
 
-thisChoices = ["choice1", "choice2", "choice3", "choice4"]
-const randomizedArr = [];
-counter = thisChoices.length
-while (counter > 0){
-    let shuffleChoice = thisChoices[(Math.floor(Math.random() * thisChoices.length))];
-    if (!randomizedArr.includes(shuffleChoice)) {
-        randomizedArr.push(shuffleChoice)
-        counter -= 1;
-    }    
+// thisChoices = ["choice1", "choice2", "choice3", "choice4"]
+// const randomizedArr = [];
+// counter = thisChoices.length
+// while (counter > 0){
+//     let shuffleChoice = thisChoices[(Math.floor(Math.random() * thisChoices.length))];
+//     if (!randomizedArr.includes(shuffleChoice)) {
+//         randomizedArr.push(shuffleChoice)
+//         counter -= 1;
+//     }    
     
-    }
-console.log(randomizedArr)
+//     }
+// console.log(randomizedArr)
 
 
 

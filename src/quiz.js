@@ -47,6 +47,7 @@ class Quiz {
         return this.questions;
       }
     });
+    return this.questions;
   }
 
   averageDifficulty() {

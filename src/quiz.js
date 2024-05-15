@@ -16,14 +16,20 @@ class Quiz {
   }
 
   shuffleQuestions() {
-    // LT solution
-    for (let i = 0; i < this.questions.length; i++) {
-      let randomIndex = Math.floor(Math.random() * this.questions.length);
-      let randomElement = this.questions[randomIndex];
-      this.questions.splice(randomElement, 1);
-      this.questions.push(randomElement);
+    const randomizedArr = [];
+    let counter = this.questions.length;
+    while (counter > 0) {
+      let shuffledChoice =
+        this.questions[Math.floor(Math.random() * this.questions.length)];
+      if (!randomizedArr.includes(shuffledChoice)) {
+        randomizedArr.push(shuffledChoice);
+        counter -= 1;
+      }
     }
+    this.questions = randomizedArr;
+    return this.questions;
   }
+  
 
   checkAnswer(answer) {
     if (this.questions[this.currentQuestionIndex].answer === answer) {

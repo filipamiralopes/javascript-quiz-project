@@ -108,10 +108,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // 2. Update the green progress bar
     // Update the green progress bar (div#progressBar) width so that it shows the percentage of questions answered
 
-    questions.forEach((q, i) => {
-      progressBar.style.width = `${((i + 1) / questions.length) * 100}`;
-      questionCount.innerText = `Question 1 of ${i + 1}`;
-    });
+    
+    progressBar.style.width = `${((quiz.currentQuestionIndex/questions.length))*100}%`;
+    questionCount.innerText = `Question ${(quiz.currentQuestionIndex+1)} of ${questions.length}`;
+    
 
     // 3. Update the question count text
     // Update the question count (div#questionCount) show the current question out of total questions

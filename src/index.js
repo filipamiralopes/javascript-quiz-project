@@ -105,16 +105,32 @@ document.addEventListener("DOMContentLoaded", () => {
     // Update the green progress bar (div#progressBar) width so that it shows the percentage of questions answered
     
     questions.forEach((q, i) => {
-      progressBar.style.width = `${((i+1)/(questions.length))*100}`; // This value is hardcoded as a placeholder
+      progressBar.style.width = `${((i+1)/(questions.length))*100}`;
+      questionCount.innerText = `Question 1 of ${i+1}`;
     })
     
 
 
     // 3. Update the question count text 
     // Update the question count (div#questionCount) show the current question out of total questions
-    
-    questions.forEach((q, i) => {
-      questionCount.innerText = `Question 1 of ${i+1}`; //  This value is hardcoded as a placeholder
+  
+
+    question.choices.forEach(ch => {
+      const option = document.createElement("input");
+      const labelOption = document.createElement("label");
+      const brElement = document.createElement("br")
+
+      option.type = "radio";
+      option.name = "choice"
+      option.value = ch;
+      option.id = "choiceId"
+      labelOption.innerText = ch
+      labelOption.setAttribute("for", option.id)
+
+      choiceContainer.appendChild(option)
+      choiceContainer.appendChild(labelOption)
+      choiceContainer.appendChild(brElement)
+
     })
 
     
@@ -131,6 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Hint 2: You can use the `element.type`, `element.name`, and `element.value` properties to set the type, name, and value of an element.
       // Hint 3: You can use the `element.appendChild()` method to append an element to the choices container.
       // Hint 4: You can use the `element.innerText` property to set the inner text of an element.
+
 
   }
 

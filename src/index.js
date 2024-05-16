@@ -67,10 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function startTimer() {
     quiz.timeRemaining = quizDuration; // not useless!!
     timer = setInterval(() => {
-      
       if (quiz.timeRemaining > 0) {
         quiz.timeRemaining -= 1;
-        // console.log(quiz.timeRemaining)
         // Convert the time remaining in seconds to minutes and seconds, and pad the numbers with zeros if needed
         const minutes = Math.floor(quiz.timeRemaining / 60)
           .toString()
@@ -78,9 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const seconds = (quiz.timeRemaining % 60).toString().padStart(2, "0");
 
         // Display the time remaining in the time remaining container
-
         timeRemainingContainer.innerText = `${minutes}:${seconds}`;
-        console.log(quiz.timeRemaining);
       } else {
         clearInterval(timer);
         showResults();
@@ -88,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 1000);
   }
 
-  startTimer()
+  startTimer();
 
   /************  EVENT LISTENERS  ************/
 
@@ -102,13 +98,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showQuestion() {
     // If the quiz has ended, show the results
-     // 1a vez
     if (quiz.hasEnded()) {
       clearInterval(timer); // 1st Stop
       showResults();
       return;
     }
-
 
     // Clear the previous question text and question choices
     questionContainer.innerText = "";
@@ -120,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     question.shuffleChoices();
 
     // YOUR CODE HERE:
-    //
+    
     // 1. Show the question
     // Update the inner text of the question container element and show the question text
     questionContainer.innerText = `${question.text}`;
@@ -171,10 +165,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function nextButtonHandler() {
-    
-    
     let selectedAnswer; // A variable to store the selected answer value
-    
+
     // YOUR CODE HERE:
     //
     // 1. Get all the choice elements. You can use the `document.querySelectorAll()` method.
@@ -212,17 +204,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     resultContainer.innerText = `You scored ${quiz.correctAnswers} out of ${questions.length} correct answers!`; // This value is hardcoded as a placeholder
 
-    // quiz.timeRemaining = quiz.timeLimit;
-
     restartButton.addEventListener("click", () => {
-      console.log("timeLimit", quiz.timeLimit);
-      console.log("timeRemaining", quiz.timeRemaining);
-      
-      const minutes = Math.floor(quiz.timeRemaining / 60)
-        .toString()
-        .padStart(2, "0");
-      const seconds = (quiz.timeRemaining % 60).toString().padStart(2, "0");
-      timeRemainingContainer.innerText = `${minutes}:${seconds}`;
+      timeRemainingContainer.innerText = `02:00`;
       clearInterval(timer);
       startTimer();
       endView.style.display = "none";
@@ -231,10 +214,6 @@ document.addEventListener("DOMContentLoaded", () => {
       quiz.correctAnswers = 0;
       quiz.shuffleQuestions();
       showQuestion();
-      
-      
     });
-
-    
   }
 });
